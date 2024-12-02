@@ -99,7 +99,7 @@ auto Font::from_bytes(const std::vector<std::byte> &font_data) noexcept
 
 static auto
 get_font_name(const ttfp_face *font_face) -> std::optional<std::string> {
-    const auto name_count = ttfp_get_name_records_count(font_face);
+    const uint16_t name_count = ttfp_get_name_records_count(font_face);
 
     const uint16_t FULL_NAME = 4;
     const uint16_t UNICODE = 0;
@@ -108,7 +108,7 @@ get_font_name(const ttfp_face *font_face) -> std::optional<std::string> {
     const uint16_t WINDOWS_SYMBOL_ENCODING_ID = 0;
     const uint16_t WINDOWS_UNICODE_BMP_ENCODING_ID = 1;
 
-    for (auto index = 0; index < name_count; ++index) {
+    for (uint16_t index = 0; index < name_count; ++index) {
         ttfp_name_record record{};
         ttfp_get_name_record(font_face, index, &record);
         bool is_unicode =
