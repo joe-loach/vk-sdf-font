@@ -1,15 +1,7 @@
 #include "font.hpp"
-#include "io_helper.hpp"
+#include "io.hpp"
 
-#include <expected>
-#include <filesystem>
-#include <fstream>
-#include <iostream>
-#include <optional>
 #include <stdio.h>
-#include <string>
-#include <unordered_map>
-#include <vector>
 
 int main(int argc, char **argv) {
     if (argc < 3) {
@@ -26,10 +18,7 @@ int main(int argc, char **argv) {
     auto font_path = argv[1];
     auto text = argv[2];
 
-    std::vector<std::unique_ptr<Line>> lines;
-    lines.push_back(std::make_unique<BigLine>());
-
-    const auto bytes = read_file_bytes(font_path);
+    const auto bytes = io::read_file_bytes(font_path);
 
     if (!bytes) {
         std::cerr << "error reading file";
@@ -42,6 +31,9 @@ int main(int argc, char **argv) {
         std::cerr << "failed to read font";
         return -1;
     }
+
+    std::cout << "Rendering '" << text << "' in font: " << font.value().name()
+              << std::endl;
 
     return 0;
 }

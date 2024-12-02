@@ -56,7 +56,20 @@
         "ratio": "cpp",
         "iomanip": "cpp",
         "expected": "cpp",
-        "filesystem": "cpp"
+        "filesystem": "cpp",
+        "cassert": "cpp",
+        "variant": "cpp",
+        "charconv": "cpp",
+        "chrono": "cpp",
+        "condition_variable": "cpp",
+        "cstring": "cpp",
+        "map": "cpp",
+        "format": "cpp",
+        "mutex": "cpp",
+        "semaphore": "cpp",
+        "span": "cpp",
+        "stop_token": "cpp",
+        "thread": "cpp"
     },
     "rust-analyzer.linkedProjects": [
         "/home/joe/dev/vk-sdf-font/builddir/rust-project.json"

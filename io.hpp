@@ -2,8 +2,10 @@
 
 #include <expected>
 #include <filesystem>
-#include <vector>
 #include <fstream>
+#include <vector>
+
+namespace io {
 
 enum class io_error {
     /// @brief A IO system error
@@ -60,3 +62,5 @@ auto read_file_bytes(const std::string &path) noexcept
 
     return buffer;
 }
+
+} // namespace io

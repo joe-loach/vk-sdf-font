@@ -7,6 +7,8 @@ project(
     ]
 )
 
+glm_dep = dependency('glm')
+
 ttf_parser = subproject('ttf-parser')
 tff_parser_dep = ttf_parser.get_variable('ttf_parser_dep')
 
@@ -14,6 +16,7 @@ executable(
     'vk-sdf-font',
     'main.cpp',
     dependencies: [
-        tff_parser_dep
+        tff_parser_dep,
+        glm_dep
     ]
 )
