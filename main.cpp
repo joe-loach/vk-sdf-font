@@ -1,5 +1,6 @@
 #include "font.hpp"
 #include "io.hpp"
+#include "vulkan.hpp"
 
 #include <stdio.h>
 
@@ -34,6 +35,8 @@ int main(int argc, char **argv) {
 
     std::cout << "Rendering '" << text << "' in font: " << font.value().name()
               << std::endl;
+
+    init_vulkan();
 
     return 0;
 }

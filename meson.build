@@ -7,7 +7,14 @@ project(
     ]
 )
 
+cmake = import('cmake')
+
+vk_bootstrap = cmake.subproject('vk-bootstrap')
+
+vk_bootstrap_dep = vk_bootstrap.dependency('vk-bootstrap')
+
 glm_dep = dependency('glm')
+glfw_dep = dependency('glfw3')
 
 ttf_parser = subproject('ttf-parser')
 tff_parser_dep = ttf_parser.get_variable('ttf_parser_dep')
@@ -17,6 +24,8 @@ executable(
     'main.cpp',
     dependencies: [
         tff_parser_dep,
-        glm_dep
+        glm_dep,
+        vk_bootstrap_dep,
+        glfw_dep
     ]
 )

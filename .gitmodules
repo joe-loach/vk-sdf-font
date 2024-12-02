@@ -1,3 +1,6 @@
 [submodule "subprojects/ttf-parser"]
 	path = subprojects/ttf-parser
 	url = https://github.com/joe-loach/ttf-parser
+[submodule "subprojects/vk-bootstrap"]
+	path = subprojects/vk-bootstrap
+	url = https://github.com/charles-lunarg/vk-bootstrap
