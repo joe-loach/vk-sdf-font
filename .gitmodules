@@ -1,0 +1,3 @@
+[submodule "subprojects/ttf-parser"]
+	path = subprojects/ttf-parser
+	url = https://github.com/harfbuzz/ttf-parser.git
