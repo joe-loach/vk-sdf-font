@@ -76,7 +76,7 @@ auto Font::from_bytes(const std::vector<std::byte> &font_data) noexcept
 
     const auto units_per_em = ttfp_get_units_per_em(font_face);
 
-    for (uint32_t glyph_index = 0; glyph_index < glyph_count; ++glyph_index) {
+    for (uint16_t glyph_index = 0; glyph_index < glyph_count; ++glyph_index) {
 
         ttfp_rect bounding_box{};
         auto geom = Geometry{};
