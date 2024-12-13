@@ -36,7 +36,10 @@ int main(int argc, char **argv) {
     std::cout << "Rendering '" << text << "' in font: " << font.value().name()
               << std::endl;
 
-    init_vulkan();
+    Init init;
+    if (auto err = device_initalisation(init)) {
+        std::cerr << err.value() << std::endl;
+    }
 
     return 0;
 }
