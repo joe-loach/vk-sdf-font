@@ -1,6 +1,7 @@
 #include "font.hpp"
 #include "io.hpp"
 #include "vulkan.hpp"
+#include "compute.hpp"
 
 #include <stdio.h>
 
@@ -40,6 +41,8 @@ int main(int argc, char **argv) {
     if (auto err = device_initalisation(init)) {
         std::cerr << err.value() << std::endl;
     }
+
+    auto module = compute_pipeline(init);
 
     return 0;
 }

@@ -60,3 +60,17 @@ auto device_initalisation(Init &init) -> std::optional<std::string> {
 
     return {};
 }
+
+auto create_shader_module(const Init& init, const std::vector<std::byte>& spv) -> VkShaderModule {
+    VkShaderModuleCreateInfo shader_info{};
+    shader_info.sType = VK_STRUCTURE_TYPE_SHADER_MODULE_CREATE_INFO;
+    shader_info.codeSize = spv.size();
+    shader_info.pCode = reinterpret_cast<const uint32_t*>(spv.data());
+
+    VkShaderModule shader_module;
+    if (vkCreateShaderModule(init.device.device, &shader_info, nullptr, &shader_module) != VK_SUCCESS) {
+        throw std::runtime_error("failed to create shader module!");
+    }
+
+    return shader_module;
+}

@@ -1,10 +1,23 @@
 #version 450 core
 
-layout (binding = 0, rgba32f) uniform writeonly image2D destTex;
+struct SDF {
+    vec2 p1;
+    vec2 p2;
+    vec2 p3;
+    vec2 p4;
+};
+
+layout (binding = 0, rgba32f) uniform writeonly image2D dest_tex;
+
+layout (std140, binding = 1) readonly buffer SDF_Data {
+    SDF sdf_data[];
+    uint sdf_tags[];
+};
+
 layout (local_size_x = 16, local_size_y = 16) in;
 
 void main() {
-    ivec2 storePos = ivec2(gl_GlobalInvocationID.xy);
+    ivec2 pos = ivec2(gl_GlobalInvocationID.xy);
 
-    imageStore(destTex, storePos, vec4(1.0, 0.0, 0.0, 1.0));
+    imageStore(dest_tex, pos, vec4(1.0, 0.0, 0.0, 1.0));
 }
